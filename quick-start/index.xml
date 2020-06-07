@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Basics on umoci</title>
@@ -26,7 +26,7 @@
       
       <guid>https://umo.ci/quick-start/workflow/</guid>
       <description>umoci&amp;rsquo;s workflow is based around an unpack-repack cycle, with some separate configuration steps. Most users are going to be primarily using the unpack and repack subcommands for most uses of umoci.
-Unpack Each image consists of a set of layers and a configuration that describes how the image should be used. umoci unpack allows you to take an image and extract its root filesystem and configuration into an runtime bundle.</description>
+Unpack Each image consists of a set of layers and a configuration that describes how the image should be used. umoci unpack allows you to take an image and extract its root filesystem and configuration into an runtime bundle. This bundle can be used by an OCI compliant container runtime to spawn a container, but also can be used directly by non-containers (as it is just a directory).</description>
     </item>
     
     <item>

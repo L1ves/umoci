@@ -2,33 +2,34 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.71.0" />
     <meta name="description" content="Documentation for umoci -- a tool for modifying OCI images.">
 <meta name="author" content="Aleksa Sarai">
 
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-<link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.png" type="image/png">
 
     <title>Architecture :: umoci</title>
+
     
+    <link href="/css/nucleus.css?1591514662" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1591514662" rel="stylesheet">
+    <link href="/css/hybrid.css?1591514662" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1591514662" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1591514662" rel="stylesheet">
+    <link href="/css/auto-complete.css?1591514662" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1591514662" rel="stylesheet">
+    <link href="/css/theme.css?1591514662" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1591514662" rel="stylesheet">
     
-    <link href="/css/nucleus.css?1546005087" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1546005087" rel="stylesheet">
-    <link href="/css/hybrid.css?1546005087" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1546005087" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1546005087" rel="stylesheet">
-    <link href="/css/auto-complete.css?1546005087" rel="stylesheet">
-    <link href="/css/theme.css?1546005087" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1546005087" rel="stylesheet">
+    <link href="/css/theme-green.css?1591514662" rel="stylesheet">
     
-      <link href="/css/theme-green.css?1546005087" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1546005087"></script>
-    
-    <style type="text/css">
-      :root #header + #content > #left > #rlblock_left{ 
+    <script src="/js/jquery-3.3.1.min.js?1591514662"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
           display:none !important;
       }
       
@@ -51,19 +52,19 @@
     </div>
     
         <div class="searchbox">
-    <label for="search-by"><i class="fa fa-search"></i></label>
-    <input data-search-input id="search-by" type="text" placeholder="Search...">
-    <span data-search-clear=""><i class="fa fa-close"></i></span>
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1546005087"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1546005087"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1591514662"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1591514662"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/umo.ci\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1546005087"></script>
+<script type="text/javascript" src="/js/search.js?1591514662"></script>
 
     
   </div>
@@ -74,6 +75,8 @@
         
           
           
+
+
 
 
  
@@ -101,6 +104,8 @@
             
 
 
+
+
  
   
     
@@ -118,6 +123,8 @@
           
             
             
+
+
 
 
  
@@ -139,6 +146,8 @@
             
 
 
+
+
  
   
     
@@ -158,6 +167,8 @@
             
 
 
+
+
  
   
     
@@ -175,6 +186,8 @@
           
             
             
+
+
 
 
  
@@ -203,6 +216,8 @@
           
 
 
+
+
  
   
     
@@ -226,6 +241,8 @@
           
             
             
+
+
 
 
  
@@ -254,6 +271,8 @@
           
 
 
+
+
  
   
     
@@ -279,6 +298,8 @@
             
 
 
+
+
  
   
     
@@ -298,6 +319,8 @@
             
 
 
+
+
  
   
     
@@ -315,6 +338,8 @@
           
             
             
+
+
 
 
  
@@ -349,7 +374,7 @@
         <h3>More</h3>
         <ul>
           
-              <li class="" role=""> 
+              <li> 
                   <a class="padding" href="https://github.com/openSUSE/umoci"><i class='fa fa-git'></i> Source Code</a>
               </li>
           
@@ -359,7 +384,7 @@
 
     
     <section id="footer">
-      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
 
     </section>
   </div>
@@ -368,25 +393,26 @@
 
 
 
-
         <section id="body">
         <div id="overlay"></div>
-        <div class="padding highlightable sticky-parent">
+        <div class="padding highlightable">
               
-              <div class="sticky-spacer">
+              <div>
                 <div id="top-bar">
                 
                 
                 <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                     <span id="sidebar-toggle-span">
                         <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
-                          <i class="fa fa-bars"></i>
+                          <i class="fas fa-bars"></i>
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
                   
                   <span class="links">
+                 
+                 
                     
           
           
@@ -400,27 +426,26 @@
           
             <a href='/'>Home</a> > <a href='/reference/'>Reference</a> > Architecture
           
-         
+        
           
-         
+        
           
-           
+        
+                 
                   </span>
                 </div>
                 
                     <div class="progress">
     <div class="wrapper">
 <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#manifests">Manifests</a></li>
-<li><a href="#mutation">Mutation</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#manifests-">Manifests</a></li>
+        <li><a href="#mutation-">Mutation</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -429,16 +454,19 @@
               </div>
             </div>
             
-
+        <div id="head-tags">
+        
+        </div>
         
         <div id="body-inner">
           
-            <h1>Architecture</h1>
+            <h1>
+              
+              Architecture
+            </h1>
           
 
         
-
-
 
 
 <p>umoci is a fairly simple tool, that takes advantage of a couple of tricks in
@@ -446,36 +474,27 @@ order to allow for modification of OCI images. This architecture document is
 fairly high-level and will likely change once some more of the
 <a href="/doc/roadmap.md">roadmap</a> is implemented. If you feel something is missing from
 this document, feel free to <a href="/contributing">contribute</a>.</p>
-
 <p>When umoci was first released, I also published <a href="https://www.cyphar.com/blog/post/umoci-new-oci-image-tool">a blog post</a> outlying
 the original architecture (which has remained fairly similar over time).</p>
-
-<h3 id="manifests">Manifests</h3>
-
+<h3 id="manifests-">Manifests</h3>
 <p>The key feature of umoci is that it allows for generation of delta layers
 without the need for copies of the original root filesystem or fancy filesystem
 features (such as snapshots or overlays). As a result, the design is applicable
 to any modern Unix-like operating system.</p>
-
 <p>This feature is implemented through the use of manifest files. In particular,
 [<code>mtree(8)</code> manifests][mtree(5)]. After extraction of the root filesystem has
 been completed, a full manifest is generated from the root filesystem. When
 wanting to generate a delta layer, a new manifest is generated and the two
 manifests are compared. Any inconsistencies are then added to the delta layer.</p>
-
 <p>By using this very simple (and quite old) technique, we can create delta layers
 without the need for copies of the original filesystem or fancy filesystems.</p>
-
-<h3 id="mutation">Mutation</h3>
-
+<h3 id="mutation-">Mutation</h3>
 <p>The main purpose of umoci is the ability to modify an image in various ways
 (by changing the configuration or adding delta layers).</p>
-
 <p>At the core of an OCI image is a content-addressable blob store, with different
 types of blobs signifying important data or metadata about an image contained
 in the store. As all blobs (both the metadata and data) are
 content-addressable, it does not make sense to talk about &ldquo;modifying&rdquo; a blob.</p>
-
 <p>Instead, what umoci does is that it creates a new version of a blob that is
 being replaced. Then, umoci walks up the referencing path that it took to
 reach the replaced blob and replaces all of the blobs that reference the old
@@ -488,13 +507,14 @@ that all of the unchanged blobs are necessarily de-duplicated (and any other
 references to the old blob remain intact).</p>
 
 
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
-
         
         </div> 
+        
+
       </div>
 
     <div id="navigation">
@@ -726,12 +746,15 @@ references to the old blob remain intact).</p>
         
 
 
-        
-            <a class="nav nav-prev" href="/reference/roadmap/" title="Roadmap"> <i class="fa fa-chevron-left"></i></a>
-        
-        
-            <a class="nav nav-next" href="/reference/security/" title="Security Considerations" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
-        
+	 
+	 
+		
+			<a class="nav nav-prev" href="/reference/roadmap/" title="Roadmap"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/reference/security/" title="Security Considerations" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
     </div>
 
     </section>
@@ -739,20 +762,19 @@ references to the old blob remain intact).</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1546005087"></script>
-    <script src="/js/perfect-scrollbar.min.js?1546005087"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1546005087"></script>
-    <script src="/js/jquery.sticky-kit.min.js?1546005087"></script>
-    <script src="/js/featherlight.min.js?1546005087"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1546005087"></script>
-    <script src="/js/highlight.pack.js?1546005087"></script>
+    <script src="/js/clipboard.min.js?1591514662"></script>
+    <script src="/js/perfect-scrollbar.min.js?1591514662"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1591514662"></script>
+    <script src="/js/jquery.sticky.js?1591514662"></script>
+    <script src="/js/featherlight.min.js?1591514662"></script>
+    <script src="/js/highlight.pack.js?1591514662"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1546005087"></script>
-    <script src="/js/learn.js?1546005087"></script>
-    <script src="/js/hugo-learn.js?1546005087"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1591514662"></script>
+    <script src="/js/learn.js?1591514662"></script>
+    <script src="/js/hugo-learn.js?1591514662"></script>
 
-    <link href="/mermaid/mermaid.css?1546005087" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1546005087"></script>
+    <link href="/mermaid/mermaid.css?1591514662" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1591514662"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

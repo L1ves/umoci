@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on umoci</title>
@@ -55,7 +55,7 @@ When umoci was first released, I also published a blog post outlying the origina
       
       <guid>https://umo.ci/quick-start/workflow/</guid>
       <description>umoci&amp;rsquo;s workflow is based around an unpack-repack cycle, with some separate configuration steps. Most users are going to be primarily using the unpack and repack subcommands for most uses of umoci.
-Unpack Each image consists of a set of layers and a configuration that describes how the image should be used. umoci unpack allows you to take an image and extract its root filesystem and configuration into an runtime bundle.</description>
+Unpack Each image consists of a set of layers and a configuration that describes how the image should be used. umoci unpack allows you to take an image and extract its root filesystem and configuration into an runtime bundle. This bundle can be used by an OCI compliant container runtime to spawn a container, but also can be used directly by non-containers (as it is just a directory).</description>
     </item>
     
     <item>
@@ -105,7 +105,7 @@ It should noted that the root filesystem created as an unprivileged user will li
       <guid>https://umo.ci/changelog/</guid>
       <description>Change Log All notable changes to this project will be documented in this file.
 The format is based on Keep a Changelog and this project adheres to Semantic Versioning.
-Unreleased Added  Full-stack verification of blob hashes and descriptor sizes is now done on all operations, improving our hardening against bad blobs (we already did some verification of layer DiffIDs but this is far more thorough). openSUSE/umoci#278 openSUSE/umoci#280 openSUSE/umoci#282  [v0.</description>
+Unreleased  Suppress repeated xattr warnings on destination filesystems that do not support xattrs.  0.4.5 - 2019-12-04 Added  Expose umoci subcommands as part of the API, so they can be used by other Go projects. openSUSE/umoci#289 Add extensible hooking to the core libraries in umoci, to allow for third-party media-types to be treated just like first-party ones (the key difference is the introspection and parsing logic).</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@ Unreleased Added  Full-stack verification of blob hashes and descriptor sizes is
       
       <guid>https://umo.ci/contributing/</guid>
       <description>Contribution Guidelines If you&amp;rsquo;re reading this, you&amp;rsquo;re likely interested in contributing to this project. That&amp;rsquo;s great! The intention of this document is to describe the basic requirements and rules-of-thumb for contributions.
-Security Issues If you are reporting a security issue, do not create an issue or file a pull request on GitHub. Instead, disclose the issue responsibly by sending an email to asarai@suse.de. If you feel it is necessary you may also encrypt your email with Pretty Good Privacy (PGP) using the PGP key 5F36 C6C6 1B54 6012 4A75 F5A6 9E18 AA26 7DDB 8DB4.</description>
+Security Issues If you are reporting a security issue, do not create an issue or file a pull request on GitHub. Instead, disclose the issue responsibly by sending an email to mailto:cyphar@cyphar.com. If you feel it is necessary you may also encrypt your email with Pretty Good Privacy (PGP) using the PGP key 6FA1B3E3F9A18CDCBE6A2CF54A7BE7BF70DE9B9F.</description>
     </item>
     
     <item>

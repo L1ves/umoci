@@ -2,33 +2,34 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.71.0" />
     <meta name="description" content="Documentation for umoci -- a tool for modifying OCI images.">
 <meta name="author" content="Aleksa Sarai">
 
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-<link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.png" type="image/png">
 
     <title>Security Considerations :: umoci</title>
+
     
+    <link href="/css/nucleus.css?1591514662" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1591514662" rel="stylesheet">
+    <link href="/css/hybrid.css?1591514662" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1591514662" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1591514662" rel="stylesheet">
+    <link href="/css/auto-complete.css?1591514662" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1591514662" rel="stylesheet">
+    <link href="/css/theme.css?1591514662" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1591514662" rel="stylesheet">
     
-    <link href="/css/nucleus.css?1546005087" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1546005087" rel="stylesheet">
-    <link href="/css/hybrid.css?1546005087" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1546005087" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1546005087" rel="stylesheet">
-    <link href="/css/auto-complete.css?1546005087" rel="stylesheet">
-    <link href="/css/theme.css?1546005087" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1546005087" rel="stylesheet">
+    <link href="/css/theme-green.css?1591514662" rel="stylesheet">
     
-      <link href="/css/theme-green.css?1546005087" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1546005087"></script>
-    
-    <style type="text/css">
-      :root #header + #content > #left > #rlblock_left{ 
+    <script src="/js/jquery-3.3.1.min.js?1591514662"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
           display:none !important;
       }
       
@@ -51,19 +52,19 @@
     </div>
     
         <div class="searchbox">
-    <label for="search-by"><i class="fa fa-search"></i></label>
-    <input data-search-input id="search-by" type="text" placeholder="Search...">
-    <span data-search-clear=""><i class="fa fa-close"></i></span>
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1546005087"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1546005087"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1591514662"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1591514662"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/umo.ci\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1546005087"></script>
+<script type="text/javascript" src="/js/search.js?1591514662"></script>
 
     
   </div>
@@ -74,6 +75,8 @@
         
           
           
+
+
 
 
  
@@ -101,6 +104,8 @@
             
 
 
+
+
  
   
     
@@ -118,6 +123,8 @@
           
             
             
+
+
 
 
  
@@ -139,6 +146,8 @@
             
 
 
+
+
  
   
     
@@ -158,6 +167,8 @@
             
 
 
+
+
  
   
     
@@ -175,6 +186,8 @@
           
             
             
+
+
 
 
  
@@ -203,6 +216,8 @@
           
 
 
+
+
  
   
     
@@ -226,6 +241,8 @@
           
             
             
+
+
 
 
  
@@ -254,6 +271,8 @@
           
 
 
+
+
  
   
     
@@ -279,6 +298,8 @@
             
 
 
+
+
  
   
     
@@ -298,6 +319,8 @@
             
 
 
+
+
  
   
     
@@ -315,6 +338,8 @@
           
             
             
+
+
 
 
  
@@ -349,7 +374,7 @@
         <h3>More</h3>
         <ul>
           
-              <li class="" role=""> 
+              <li> 
                   <a class="padding" href="https://github.com/openSUSE/umoci"><i class='fa fa-git'></i> Source Code</a>
               </li>
           
@@ -359,7 +384,7 @@
 
     
     <section id="footer">
-      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
 
     </section>
   </div>
@@ -368,25 +393,26 @@
 
 
 
-
         <section id="body">
         <div id="overlay"></div>
-        <div class="padding highlightable sticky-parent">
+        <div class="padding highlightable">
               
-              <div class="sticky-spacer">
+              <div>
                 <div id="top-bar">
                 
                 
                 <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                     <span id="sidebar-toggle-span">
                         <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
-                          <i class="fa fa-bars"></i>
+                          <i class="fas fa-bars"></i>
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
                   
                   <span class="links">
+                 
+                 
                     
           
           
@@ -400,28 +426,27 @@
           
             <a href='/'>Home</a> > <a href='/reference/'>Reference</a> > Security Considerations
           
-         
+        
           
-         
+        
           
-           
+        
+                 
                   </span>
                 </div>
                 
                     <div class="progress">
     <div class="wrapper">
 <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#path-traversal">Path Traversal</a></li>
-<li><a href="#arbitrary-inode-and-mode-creation">Arbitrary Inode and Mode Creation</a></li>
-<li><a href="#compression-bomb-attacks">Compression Bomb Attacks</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#path-traversal-">Path Traversal</a></li>
+        <li><a href="#arbitrary-inode-and-mode-creation-">Arbitrary Inode and Mode Creation</a></li>
+        <li><a href="#compression-bomb-attacks-">Compression Bomb Attacks</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -430,16 +455,19 @@
               </div>
             </div>
             
-
+        <div id="head-tags">
+        
+        </div>
         
         <div id="body-inner">
           
-            <h1>Security Considerations</h1>
+            <h1>
+              
+              Security Considerations
+            </h1>
           
 
         
-
-
 
 
 <p>umoci is entrusted with taking a particular image and expanding it on the
@@ -448,74 +476,61 @@ result, umoci must be very careful about filesystem access to avoid
 vulnerabilities that may impact other components of the system. If you feel
 something is missing from this document, feel free to
 <a href="/contributing">contribute</a>.</p>
-
 <p>If you&rsquo;ve found a security flaw in umoci that comes from a security
 consideration we haven&rsquo;t considered before, please follow our instructions on
 <a href="/contributing">how to responsibly disclose a security issue</a>. Once it has
 been resolved, feel free to contribute to this document a description of the
 consideration that we were missing.</p>
-
-<h3 id="path-traversal">Path Traversal</h3>
-
+<h3 id="path-traversal-">Path Traversal</h3>
 <p>The most obvious vulnerabilities that umoci has to protect against is path
 traversal vulnerabilities. However, path traversal vulnerabilities in umoci
 are even more dangerous because umoci has to emulate a <code>chroot</code> when
 interacting with the filesystem (as well as never mutating inodes in case it
 may be referenced by a path external to the root filesystem).</p>
-
 <blockquote>
 <p><strong>NOTE</strong>: Users are expected to appreciate the risks of interacting with a
 foreign filesystem rootfs, if they intend to not use a virtualization system
 such as <code>chroot</code> or containers when interacting with the rootfs umoci has
 expanded.</p>
 </blockquote>
-
 <p>There are multiple ways that umoci defends against this. The first and most
 important is that all path computation of destination and source paths is done
 using the <a href="https://github.com/cyphar/filepath-securejoin"><code>filepath-securejoin</code></a> library (which was written by the
-author of umoci<sup><a href="#foot1">1</a></sup>). <code>filepath-securejoin</code> solves this
+author of umoci<!-- raw HTML omitted --><a href="#foot1">1</a><!-- raw HTML omitted -->). <code>filepath-securejoin</code> solves this
 problem by effectively implementing a variant of <code>filepath.EvalSymlinks</code> except
 that all symlink and lexical evaluation is done manually within a particular
 scope. We have extensive testing (in both projects) to show that a variety of
 attacks will not succeed against our implementation.</p>
-
 <p>In addition, umoci has a series of sanity checks that ensures that operations
 that involve modifying the filesystem based on arbitrary image input will not
 affect anything outside of the intended directory root. These additions are
 purely defensive in nature, as <code>filepath-securejoin</code> handles all known
 instances of path traversal attacks in this context.</p>
-
 <p>umoci <strong>does not</strong> attempt to be safe against shared filesystem access during
 an <code>unpack</code> or <code>repack</code> operation. This is because it is not possible with any
-modern Unix<sup><a href="#foot2">2</a></sup> system to safely ensure that a particular
+modern Unix<!-- raw HTML omitted --><a href="#foot2">2</a><!-- raw HTML omitted --> system to safely ensure that a particular
 user-space path evaluation will be atomic (nor that the returned result cannot
 later become unsafe given further filesystem manipulation). Once an <code>unpack</code> or
 <code>repack</code> operation has completed, arbitrary filesystem modification of the root
 filesystem will not cause umoci to act unsafely in future operations.</p>
-
 <p>umoci also defends against inode mutation by always replacing inodes. This
 actually makes the code simpler, but makes sure that hardlinks to inodes inside
 a root filesystem won&rsquo;t see any modifications because of umoci (not that
 umoci currently permits unpacking into existing directories).</p>
-
-<p><a name="foot1">1</a>: The implementation linked is loosely based on Docker&rsquo;s
+<p><!-- raw HTML omitted -->1<!-- raw HTML omitted -->: The implementation linked is loosely based on Docker&rsquo;s
 implementation of a similar concept (to protect against similar path
 traversals). Interestingly, the security vulnerabilities that alerted Docker to
 this issue several years ago were discovered and fixed by this author as well.</p>
-
-<p><a name="foot2">2</a>: Interestingly, Plan9 has effectively solved this problem
+<p><!-- raw HTML omitted -->2<!-- raw HTML omitted -->: Interestingly, Plan9 has effectively solved this problem
 by removing symlinks and instead using namespaces. However, umoci&rsquo;s main user
 demographic is not Plan9 so this tid-bit is not of much use to us.</p>
-
-<h3 id="arbitrary-inode-and-mode-creation">Arbitrary Inode and Mode Creation</h3>
-
+<h3 id="arbitrary-inode-and-mode-creation-">Arbitrary Inode and Mode Creation</h3>
 <p>Note that this attack is only applicable if umoci is being executed as a
 <strong>privileged user</strong> (on GNU/Linux this means having <code>CAP_SYS_ADMIN</code> and a host
 of other capabilities). umoci running in rootless mode cannot create
 arbitrary inodes due to ordinary access control implemented by the operating
 system (umoci only uses standard VFS operations to implement rootless mode,
 which have very well-understood access control restrictions).</p>
-
 <p>Effectively this attack boils down to the fact that a <code>tar</code> archive (which is
 what makes up the layers in OCI images) contains inode information that can be
 used to cause umoci to create block devices with arbitrary major and minor
@@ -527,24 +542,18 @@ from being able to mess with such files, but this doesn&rsquo;t help against
 host-side attackers. This attack also could be used to provide an unprivileged
 user (in the host) access unsafe set-uid binaries, allowing for possible
 privilege escalation.</p>
-
-<p>umoci&rsquo;s defence against this attack is to make the <code>bundle</code> directory <code>chmod
-go-rwx</code> which will ensure that unprivileged users won&rsquo;t be able to resolve the
+<p>umoci&rsquo;s defence against this attack is to make the <code>bundle</code> directory <code>chmod go-rwx</code> which will ensure that unprivileged users won&rsquo;t be able to resolve the
 dangerous inode or setuid binary (note that bind-mounts can circumvent this,
 but a user cannot create a bind-mount without being able to resolve the path).</p>
-
-<h3 id="compression-bomb-attacks">Compression Bomb Attacks</h3>
-
+<h3 id="compression-bomb-attacks-">Compression Bomb Attacks</h3>
 <p>OCI images specifically require implementations to support layers compressed
 with <code>gzip</code>. This results in <a href="https://www.rapid7.com/db/modules/auxiliary/dos/http/gzip_bomb_dos">gzip bomb attacks</a> being potentially
 practical. In the worst cases this can result in denial-of-service attacks, if
 umoci is run in a context without any storage or I/O quotas.</p>
-
 <p>umoci uses the <a href="https://golang.org/pkg/compress/gzip/">Go standard library implementation of <code>gzip</code></a>, which
 <em>does not appear</em> to support multiple-round decompression. This somewhat
 reduces the amplification nature of this attack, but the attack is still
 present.</p>
-
 <p><strong>umoci currently has no specific defences against this attack.</strong> There is a
 very trivial solution that we can add, which is a <code>--maximum-layer-size</code> flag
 that will abort an <code>unpack</code> operation if any single layer is deemed too large.
@@ -555,7 +564,6 @@ used to detect compression bombs, but I am under the impression that that would
 be the only reasonable way to detect this in the general case (a heuristic
 based on the Shannon entropy or the compression ratio would be very
 interesting).</p>
-
 <p>A workaround for this problem is to place umoci inside of the relevant
 cgroups so that it will not drain the system resources too heavily if
 encountering a compression bomb. As mentioned above, detecting generic
@@ -563,13 +571,14 @@ compression bombs does not appear to be a solved problem, so this workaround
 only helps to reduce the impact and does not mitigate it.</p>
 
 
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
-
         
         </div> 
+        
+
       </div>
 
     <div id="navigation">
@@ -798,12 +807,15 @@ only helps to reduce the impact and does not mitigate it.</p>
         
 
 
-        
-            <a class="nav nav-prev" href="/reference/architecture/" title="Architecture"> <i class="fa fa-chevron-left"></i></a>
-        
-        
-            <a class="nav nav-next" href="/reference/roadmap/" title="Roadmap" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
-        
+	 
+	 
+		
+			<a class="nav nav-prev" href="/reference/architecture/" title="Architecture"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/reference/roadmap/" title="Roadmap" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
     </div>
 
     </section>
@@ -811,20 +823,19 @@ only helps to reduce the impact and does not mitigate it.</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1546005087"></script>
-    <script src="/js/perfect-scrollbar.min.js?1546005087"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1546005087"></script>
-    <script src="/js/jquery.sticky-kit.min.js?1546005087"></script>
-    <script src="/js/featherlight.min.js?1546005087"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1546005087"></script>
-    <script src="/js/highlight.pack.js?1546005087"></script>
+    <script src="/js/clipboard.min.js?1591514662"></script>
+    <script src="/js/perfect-scrollbar.min.js?1591514662"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1591514662"></script>
+    <script src="/js/jquery.sticky.js?1591514662"></script>
+    <script src="/js/featherlight.min.js?1591514662"></script>
+    <script src="/js/highlight.pack.js?1591514662"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1546005087"></script>
-    <script src="/js/learn.js?1546005087"></script>
-    <script src="/js/hugo-learn.js?1546005087"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1591514662"></script>
+    <script src="/js/learn.js?1591514662"></script>
+    <script src="/js/hugo-learn.js?1591514662"></script>
 
-    <link href="/mermaid/mermaid.css?1546005087" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1546005087"></script>
+    <link href="/mermaid/mermaid.css?1591514662" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1591514662"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
