@@ -12,21 +12,21 @@
     <title>Roadmap :: umoci</title>
 
     
-    <link href="/css/nucleus.css?1591514662" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1591514662" rel="stylesheet">
-    <link href="/css/hybrid.css?1591514662" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1591514662" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1591514662" rel="stylesheet">
-    <link href="/css/auto-complete.css?1591514662" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1591514662" rel="stylesheet">
-    <link href="/css/theme.css?1591514662" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1591514662" rel="stylesheet">
+    <link href="/css/nucleus.css?1592353471" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1592353471" rel="stylesheet">
+    <link href="/css/hybrid.css?1592353471" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1592353471" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1592353471" rel="stylesheet">
+    <link href="/css/auto-complete.css?1592353471" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1592353471" rel="stylesheet">
+    <link href="/css/theme.css?1592353471" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1592353471" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1591514662" rel="stylesheet">
+    <link href="/css/theme-green.css?1592353471" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1591514662"></script>
+    <script src="/js/jquery-3.3.1.min.js?1592353471"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1591514662"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1591514662"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1592353471"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1592353471"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/umo.ci\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1591514662"></script>
+<script type="text/javascript" src="/js/search.js?1592353471"></script>
 
     
   </div>
@@ -276,6 +276,124 @@
  
   
     
+    <li data-nav-id="/meta/" title="Meta" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/meta/">
+          Meta
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/meta/changelog/" title="Changelog" class="dd-item ">
+        <a href="/meta/changelog/">
+        Changelog
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/meta/contributing/" title="Contribution Guidelines" class="dd-item ">
+        <a href="/meta/contributing/">
+        Contribution Guidelines
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/meta/governance/" title="Governance" class="dd-item ">
+        <a href="/meta/governance/">
+        Governance
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/meta/releases/" title="Release Procedure" class="dd-item ">
+        <a href="/meta/releases/">
+        Release Procedure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
     <li data-nav-id="/reference/" title="Reference" class="dd-item 
         parent
         
@@ -375,7 +493,7 @@
         <ul>
           
               <li> 
-                  <a class="padding" href="https://github.com/openSUSE/umoci"><i class='fa fa-git'></i> Source Code</a>
+                  <a class="padding" href="https://github.com/opencontainers/umoci"><i class='fa fa-git'></i> Source Code</a>
               </li>
           
         </ul>
@@ -424,7 +542,7 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/reference/'>Reference</a> > Roadmap
+            <a href='/'></a> > <a href='/reference/'>Reference</a> > Roadmap
           
         
           
@@ -444,7 +562,6 @@
         <li><a href="#improved-api-design-">Improved API Design</a></li>
         <li><a href="#arbitrary-tree-structures-interface-">Arbitrary Tree Structures Interface</a></li>
         <li><a href="#direct-mtree-from-layer-generation-">Direct <code>mtree</code>-from-layer Generation</a></li>
-        <li><a href="#bus-factor-">Bus Factor</a></li>
       </ul>
     </li>
   </ul>
@@ -575,13 +692,6 @@ should not be a huge deal.</p>
 functionality, but I&rsquo;m not entirely convinced that it will work as well as
 expected (especially given the enormous amount of special casing in <code>go-mtree</code>
 that already exists in order to implement <code>tar</code> archive support).</p>
-<h3 id="bus-factor-">Bus Factor</h3>
-<p>At the moment this project was effectively entirely written and maintained by
-one person. This is obviously an unsustainable development model, and also
-raises several other issues. In addition, currently there is no public mailing
-list for the development of umoci (nor is there a security mailing list)
-which makes it difficult to on-board new maintainers or significant
-contributors.</p>
 
 
 <footer class="footline">
@@ -750,6 +860,86 @@ contributors.</p>
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -836,19 +1026,19 @@ contributors.</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1591514662"></script>
-    <script src="/js/perfect-scrollbar.min.js?1591514662"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1591514662"></script>
-    <script src="/js/jquery.sticky.js?1591514662"></script>
-    <script src="/js/featherlight.min.js?1591514662"></script>
-    <script src="/js/highlight.pack.js?1591514662"></script>
+    <script src="/js/clipboard.min.js?1592353471"></script>
+    <script src="/js/perfect-scrollbar.min.js?1592353471"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1592353471"></script>
+    <script src="/js/jquery.sticky.js?1592353471"></script>
+    <script src="/js/featherlight.min.js?1592353471"></script>
+    <script src="/js/highlight.pack.js?1592353471"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1591514662"></script>
-    <script src="/js/learn.js?1591514662"></script>
-    <script src="/js/hugo-learn.js?1591514662"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1592353471"></script>
+    <script src="/js/learn.js?1592353471"></script>
+    <script src="/js/hugo-learn.js?1592353471"></script>
 
-    <link href="/mermaid/mermaid.css?1591514662" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1591514662"></script>
+    <link href="/mermaid/mermaid.css?1592353471" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1592353471"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

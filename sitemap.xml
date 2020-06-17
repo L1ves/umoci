@@ -47,26 +47,15 @@
   </url>
   
   <url>
+    <loc>https://umo.ci/meta/</loc>
+  </url>
+  
+  <url>
     <loc>https://umo.ci/reference/</loc>
   </url>
   
   <url>
-    <loc>https://umo.ci/changelog/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://umo.ci/code-of-conduct/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://umo.ci/contributing/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://umo.ci/governance/</loc>
+    <loc>https://umo.ci/</loc>
     <priority>0</priority>
   </url>
   
@@ -75,7 +64,19 @@
   </url>
   
   <url>
-    <loc>https://umo.ci/</loc>
+    <loc>https://umo.ci/meta/changelog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://umo.ci/meta/contributing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://umo.ci/meta/governance/</loc>
+  </url>
+  
+  <url>
+    <loc>https://umo.ci/meta/releases/</loc>
   </url>
   
   <url>

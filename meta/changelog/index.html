@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.71.0" />
+    <meta name="description" content="Documentation for umoci -- a tool for modifying OCI images.">
+<meta name="author" content="Aleksa Sarai">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Changelog :: umoci</title>
+
+    
+    <link href="/css/nucleus.css?1592353471" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1592353471" rel="stylesheet">
+    <link href="/css/hybrid.css?1592353471" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1592353471" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1592353471" rel="stylesheet">
+    <link href="/css/auto-complete.css?1592353471" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1592353471" rel="stylesheet">
+    <link href="/css/theme.css?1592353471" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1592353471" rel="stylesheet">
+    
+    <link href="/css/theme-green.css?1592353471" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1592353471"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/meta/changelog/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="/"><img src="/umoci-white.png" width="70%"/></a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1592353471"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1592353471"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/umo.ci\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1592353471"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/quick-start/" title="Basics" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/quick-start/">
+          Basics
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/quick-start/getting-an-image/" title="Getting an Image" class="dd-item ">
+        <a href="/quick-start/getting-an-image/">
+        Getting an Image
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/quick-start/workflow/" title="Workflow" class="dd-item ">
+        <a href="/quick-start/workflow/">
+        Workflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/quick-start/creating-an-image/" title="Creating an Image" class="dd-item ">
+        <a href="/quick-start/creating-an-image/">
+        Creating an Image
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/quick-start/garbage-collection/" title="Garbage Collection" class="dd-item ">
+        <a href="/quick-start/garbage-collection/">
+        Garbage Collection
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/quick-start/rootless/" title="Rootless Containers" class="dd-item ">
+        <a href="/quick-start/rootless/">
+        Rootless Containers
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/advanced/" title="Advanced" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/advanced/">
+          Advanced
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/advanced/workflow-optimisation/" title="Workflow Optimisation" class="dd-item ">
+        <a href="/advanced/workflow-optimisation/">
+        Workflow Optimisation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/meta/" title="Meta" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/meta/">
+          Meta
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/meta/changelog/" title="Changelog" class="dd-item active">
+        <a href="/meta/changelog/">
+        Changelog
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/meta/contributing/" title="Contribution Guidelines" class="dd-item ">
+        <a href="/meta/contributing/">
+        Contribution Guidelines
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/meta/governance/" title="Governance" class="dd-item ">
+        <a href="/meta/governance/">
+        Governance
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/meta/releases/" title="Release Procedure" class="dd-item ">
+        <a href="/meta/releases/">
+        Release Procedure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/reference/" title="Reference" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/reference/">
+          Reference
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/reference/roadmap/" title="Roadmap" class="dd-item ">
+        <a href="/reference/roadmap/">
+        Roadmap
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/reference/architecture/" title="Architecture" class="dd-item ">
+        <a href="/reference/architecture/">
+        Architecture
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/reference/security/" title="Security Considerations" class="dd-item ">
+        <a href="/reference/security/">
+        Security Considerations
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/opencontainers/umoci"><i class='fa fa-git'></i> Source Code</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'></a> > <a href='/meta/'>Meta</a> > Changelog
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#unreleased-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.5...HEAD">Unreleased</a></a></li>
+    <li><a href="#045---2019-12-04-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.4...v0.4.5">0.4.5</a> - 2019-12-04</a>
+      <ul>
+        <li><a href="#added-">Added</a></li>
+        <li><a href="#fixed-">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#044---2019-01-30-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.3...v0.4.4">0.4.4</a> - 2019-01-30</a>
+      <ul>
+        <li><a href="#added--1">Added</a></li>
+      </ul>
+    </li>
+    <li><a href="#043---2018-11-11-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.2...v0.4.3">0.4.3</a> - 2018-11-11</a>
+      <ul>
+        <li><a href="#added--2">Added</a></li>
+      </ul>
+    </li>
+    <li><a href="#042---2018-09-11-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.1...v0.4.2">0.4.2</a> - 2018-09-11</a>
+      <ul>
+        <li><a href="#added--3">Added</a></li>
+        <li><a href="#fixed--1">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#041---2018-08-16-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.0...v0.4.1">0.4.1</a> - 2018-08-16</a>
+      <ul>
+        <li><a href="#added--4">Added</a></li>
+        <li><a href="#fixed--2">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#040---2018-03-10-"><a href="https://github.com/opencontainers/umoci/compare/v0.3.1...v0.4.0">0.4.0</a> - 2018-03-10</a>
+      <ul>
+        <li><a href="#added--5">Added</a></li>
+        <li><a href="#fixed--3">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#031---2017-10-04-"><a href="https://github.com/opencontainers/umoci/compare/v0.3.0...v0.3.1">0.3.1</a> - 2017-10-04</a>
+      <ul>
+        <li><a href="#fixed--4">Fixed</a></li>
+        <li><a href="#changed-">Changed</a></li>
+        <li><a href="#security-">Security</a></li>
+      </ul>
+    </li>
+    <li><a href="#030---2017-07-20-"><a href="https://github.com/opencontainers/umoci/compare/v0.2.1...v0.3.0">0.3.0</a> - 2017-07-20</a>
+      <ul>
+        <li><a href="#added--6">Added</a></li>
+        <li><a href="#changed--1">Changed</a></li>
+      </ul>
+    </li>
+    <li><a href="#021---2017-04-12-"><a href="https://github.com/opencontainers/umoci/compare/v0.2.0...v0.2.1">0.2.1</a> - 2017-04-12</a>
+      <ul>
+        <li><a href="#added--7">Added</a></li>
+        <li><a href="#changed--2">Changed</a></li>
+      </ul>
+    </li>
+    <li><a href="#020---2017-04-11-"><a href="https://github.com/opencontainers/umoci/compare/v0.1.0...v0.2.0">0.2.0</a> - 2017-04-11</a>
+      <ul>
+        <li><a href="#added--8">Added</a></li>
+        <li><a href="#changed--3">Changed</a></li>
+        <li><a href="#fixed--5">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#010---2017-02-11-"><a href="https://github.com/opencontainers/umoci/compare/v0.0.0...v0.1.0">0.1.0</a> - 2017-02-11</a>
+      <ul>
+        <li><a href="#added--9">Added</a></li>
+        <li><a href="#changed--4">Changed</a></li>
+        <li><a href="#fixed--6">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#000---2017-02-07-"><a href="https://github.com/opencontainers/umoci/compare/v0.0.0-rc3...v0.0.0">0.0.0</a> - 2017-02-07</a>
+      <ul>
+        <li><a href="#added--10">Added</a></li>
+        <li><a href="#fixed--7">Fixed</a></li>
+        <li><a href="#changed--5">Changed</a></li>
+      </ul>
+    </li>
+    <li><a href="#000-rc3---2016-12-19-"><a href="https://github.com/opencontainers/umoci/compare/v0.0.0-rc2...v0.0.0-rc3">0.0.0-rc3</a> - 2016-12-19</a>
+      <ul>
+        <li><a href="#added--11">Added</a></li>
+        <li><a href="#changed--6">Changed</a></li>
+      </ul>
+    </li>
+    <li><a href="#000-rc2---2016-12-12-"><a href="https://github.com/opencontainers/umoci/compare/v0.0.0-rc1...v0.0.0-rc2">0.0.0-rc2</a> - 2016-12-12</a>
+      <ul>
+        <li><a href="#added--12">Added</a></li>
+        <li><a href="#changed--7">Changed</a></li>
+        <li><a href="#fixed--8">Fixed</a></li>
+        <li><a href="#security--1">Security</a></li>
+      </ul>
+    </li>
+    <li><a href="#000-rc1---2016-11-10-">0.0.0-rc1 - 2016-11-10</a>
+      <ul>
+        <li><a href="#added--13">Added</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Changelog
+            </h1>
+          
+
+        
+
+
+<h1 id="changelog-">Changelog</h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="http://keepachangelog.com/">Keep a Changelog</a>
+and this project adheres to <a href="http://semver.org/">Semantic Versioning</a>.</p>
+<h2 id="unreleased-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.5...HEAD">Unreleased</a></h2>
+<ul>
+<li>Suppress repeated xattr warnings on destination filesystems that do not
+support xattrs.</li>
+</ul>
+<h2 id="045---2019-12-04-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.4...v0.4.5">0.4.5</a> - 2019-12-04</h2>
+<h3 id="added-">Added</h3>
+<ul>
+<li>Expose umoci subcommands as part of the API, so they can be used by other Go
+projects. opencontainers/umoci#289</li>
+<li>Add extensible hooking to the core libraries in umoci, to allow for
+third-party media-types to be treated just like first-party ones (the key
+difference is the introspection and parsing logic). opencontainers/umoci#299
+opencontainers/umoci#307</li>
+</ul>
+<h3 id="fixed-">Fixed</h3>
+<ul>
+<li>Use <code>type: bind</code> for generated <code>config.json</code> bind-mounts. While this doesn&rsquo;t
+make too much sense (see opencontainers/runc#2035), it does mean that
+rootless containers work properly with newer <code>runc</code> releases (which appear to
+have regressed when handling file-based bind-mounts with a &ldquo;bad&rdquo; <code>type</code>).
+opencontainers/umoci#294 opencontainers/umoci#295</li>
+<li>Don&rsquo;t insert a new layer if there is no diff. opencontainers/umoci#293</li>
+<li>Only output a warning if forbidden extended attributes are present inside the
+tar archive &ndash; otherwise we fail on certain (completely broken) Docker
+images. opencontainers/umoci#304</li>
+</ul>
+<h2 id="044---2019-01-30-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.3...v0.4.4">0.4.4</a> - 2019-01-30</h2>
+<h3 id="added--1">Added</h3>
+<ul>
+<li>Full-stack verification of blob hashes and descriptor sizes is now done on
+all operations, improving our hardening against bad blobs (we already did
+some verification of layer DiffIDs but this is far more thorough).
+opencontainers/umoci#278 opencontainers/umoci#280 opencontainers/umoci#282</li>
+</ul>
+<h2 id="043---2018-11-11-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.2...v0.4.3">0.4.3</a> - 2018-11-11</h2>
+<h3 id="added--2">Added</h3>
+<ul>
+<li>All umoci commands that had <code>--history.*</code> options can now decide to omit a
+history entry with <code>--no-history</code>. Note that while this is supported for
+commands that create layers (<code>umoci repack</code>, <code>umoci insert</code>, and <code>umoci raw add-layer</code>) it is not recommended to use it for those commands since it can
+cause other tools to become confused when inspecting the image history. The
+primary usecase is to allow <code>umoci config --no-history</code> to leave no traces in
+the history. See SUSE/kiwi#871. opencontainers/umoci#270</li>
+<li><code>umoci insert</code> now has a <code>--tag</code> option that allows you to non-destructively
+insert files into an image. The semantics match <code>umoci config --tag</code>.
+opencontainers/umoci#273</li>
+</ul>
+<h2 id="042---2018-09-11-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.1...v0.4.2">0.4.2</a> - 2018-09-11</h2>
+<h3 id="added--3">Added</h3>
+<ul>
+<li>umoci now has an exposed Go API. At the moment it&rsquo;s unclear whether it will
+be changed significantly, but at the least now users can use
+umoci-as-a-library in a fairly sane way. opencontainers/umoci#245</li>
+<li>Added <code>umoci unpack --keep-dirlinks</code> (in the same vein as rsync&rsquo;s flag with
+the same name) which allows layers that contain entries which have a symlink
+as a path component. opencontainers/umoci#246</li>
+<li><code>umoci insert</code> now supports whiteouts in two significant ways. You can use
+<code>--whiteout</code> to &ldquo;insert&rdquo; a deletion of a given path, while you can use
+<code>--opaque</code> to replace a directory by adding an opaque whiteout (the default
+behaviour causes the old and new directories to be merged).
+opencontainers/umoci#257</li>
+</ul>
+<h3 id="fixed--1">Fixed</h3>
+<ul>
+<li>Docker has changed how they handle whiteouts for non-existent files. The
+specification is loose on this (and in umoci we&rsquo;ve always been liberal with
+whiteout generation &ndash; to avoid cases where someone was confused we didn&rsquo;t
+have a whiteout for every entry). But now that they have deviated from the
+spec, in the interest of playing nice, we can just follow their new
+restriction (even though it is not supported by the spec). This also makes
+our layers <em>slightly</em> smaller. opencontainers/umoci#254</li>
+<li><code>umoci unpack</code> now no longer erases <code>system.nfs4_acl</code> and also has some more
+sophisticated handling of forbidden xattrs. opencontainers/umoci#252
+opencontainers/umoci#248</li>
+<li><code>umoci unpack</code> now appears to work correctly on SELinux-enabled systems
+(previously we had various issues where <code>umoci</code> wouldn&rsquo;t like it when it was
+trying to ensure the filesystem was reproducibly generated and SELinux xattrs
+would act strangely). To fix this, now <code>umoci unpack</code> will only cause errors
+if it has been asked to change a forbidden xattr to a value different than
+it&rsquo;s current on-disk value. opencontainers/umoci#235 opencontainers/umoci#259</li>
+</ul>
+<h2 id="041---2018-08-16-"><a href="https://github.com/opencontainers/umoci/compare/v0.4.0...v0.4.1">0.4.1</a> - 2018-08-16</h2>
+<h3 id="added--4">Added</h3>
+<ul>
+<li>The number of possible tags that are now valid with <code>umoci</code> subcommands has
+increased significantly due to an expansion in the specification of the
+format of the <code>ref.name</code> annotation. To quote the specification, the
+following is the EBNF of valid <code>refname</code> values. opencontainers/umoci#234
+<pre><code>refname   ::= component (&quot;/&quot; component)*
+component ::= alphanum (separator alphanum)*
+alphanum  ::= [A-Za-z0-9]+
+separator ::= [-._:@+] | &quot;--&quot;
+</code></pre></li>
+<li>A new <code>umoci insert</code> subcommand which adds a given file to a path inside the
+container. opencontainers/umoci#237</li>
+<li>A new <code>umoci raw unpack</code> subcommand in order to allow users to unpack images
+without needing a configuration or any of the manifest generation.
+opencontainers/umoci#239</li>
+<li><code>umoci</code> how has a logo. Thanks to <a href="http://www.maxbailey.me/">Max Bailey</a> for contributing
+this to the project. opencontainers/umoci#165 opencontainers/umoci#249</li>
+</ul>
+<h3 id="fixed--2">Fixed</h3>
+<ul>
+<li><code>umoci unpack</code> now handles out-of-order regular whiteouts correctly (though
+this ordering is not recommended by the spec &ndash; nor is it required). This is
+an extension of opencontainers/umoci#229 that was missed during review.
+opencontainers/umoci#232</li>
+<li><code>umoci unpack</code> and <code>umoci repack</code> now make use of a far more optimised <code>gzip</code>
+compression library. In some benchmarks this has resulted in <code>umoci repack</code>
+speedups of up to 3x (though of course, you should do your own benchmarks).
+<code>umoci unpack</code> unfortunately doesn&rsquo;t have as significant of a performance
+improvement, due to the nature of <code>gzip</code> decompression (in future we may
+switch to <code>zlib</code> wrappers). opencontainers/umoci#225 opencontainers/umoci#233</li>
+</ul>
+<h2 id="040---2018-03-10-"><a href="https://github.com/opencontainers/umoci/compare/v0.3.1...v0.4.0">0.4.0</a> - 2018-03-10</h2>
+<h3 id="added--5">Added</h3>
+<ul>
+<li><code>umoci repack</code> now supports <code>--refresh-bundle</code> which will update the
+OCI bundle&rsquo;s metadata (mtree and umoci-specific manifests) after packing the
+image tag. This means that the bundle can be used as a base layer for
+future diffs without needing to unpack the image again. opencontainers/umoci#196</li>
+<li>Added a website, and reworked the documentation to be better structured. You
+can visit the website at <a href="https://umo.ci/"><code>umo.ci</code></a>. opencontainers/umoci#188</li>
+<li>Added support for the <code>user.rootlesscontainers</code> specification, which allows
+for persistent on-disk emulation of <code>chown(2)</code> inside rootless containers.
+This implementation is interoperable with <a href="https://github.com/AkihiroSuda/runrootless">@AkihiroSuda&rsquo;s <code>PRoot</code>
+fork</a> (though we do not test its interoperability at the
+moment) as both tools use <a href="https://rootlesscontaine.rs/proto/rootlesscontainers.proto">the same protobuf
+specification</a>. opencontainers/umoci#227</li>
+<li><code>umoci unpack</code> now has support for opaque whiteouts (whiteouts which remove
+all children of a directory in the lower layer), though <code>umoci repack</code> does
+not currently have support for generating them. While this is technically a
+spec requirement, through testing we&rsquo;ve never encountered an actual user of
+these whiteouts. opencontainers/umoci#224 opencontainers/umoci#229</li>
+<li><code>umoci unpack</code> will now use some rootless tricks inside user namespaces for
+operations that are known to fail (such as <code>mknod(2)</code>) while other operations
+will be carried out as normal (such as <code>lchown(2)</code>). It should be noted that
+the <code>/proc/self/uid_map</code> checking we do can be tricked into not detecting
+user namespaces, but you would need to be trying to break it on purpose.
+opencontainers/umoci#171 opencontainers/umoci#230</li>
+</ul>
+<h3 id="fixed--3">Fixed</h3>
+<ul>
+<li>Fix a bug in our &ldquo;parent directory restore&rdquo; code, which is responsible for
+ensuring that the mtime and other similar properties of a directory are not
+modified by extraction inside said directory. The bug would manifest as
+xattrs not being restored properly in certain edge-cases (which we
+incidentally hit in a test-case). opencontainers/umoci#161 opencontainers/umoci#162</li>
+<li><code>umoci unpack</code> will now &ldquo;clean up&rdquo; the bundle generated if an error occurs
+during unpacking. Previously this didn&rsquo;t happen, which made cleaning up the
+responsibility of the caller (which was quite difficult if you were
+unprivileged). This is a breaking change, but is in the error path so it&rsquo;s
+not critical. opencontainers/umoci#174 opencontainers/umoci#187</li>
+<li><code>umoci gc</code> now will no longer remove unknown files and directories that
+aren&rsquo;t <code>flock(2)</code>ed, thus ensuring that any possible OCI image-spec
+extensions or other users of an image being operated on will no longer
+break.  opencontainers/umoci#198</li>
+<li><code>umoci unpack --rootless</code> will now correctly handle regular file unpacking
+when overwriting a file that <code>umoci</code> doesn&rsquo;t have write access to. In
+addition, the semantics of pre-existing hardlinks to a clobbered file are
+clarified (the hard-links will not refer to the new layer&rsquo;s inode).
+opencontainers/umoci#222 opencontainers/umoci#223</li>
+</ul>
+<h2 id="031---2017-10-04-"><a href="https://github.com/opencontainers/umoci/compare/v0.3.0...v0.3.1">0.3.1</a> - 2017-10-04</h2>
+<h3 id="fixed--4">Fixed</h3>
+<ul>
+<li>Fix several minor bugs in <code>hack/release.sh</code> that caused the release artefacts
+to not match the intended style, as well as making it more generic so other
+projects can use it. opencontainers/umoci#155 opencontainers/umoci#163</li>
+<li>A recent configuration issue caused <code>go vet</code> and <code>go lint</code> to not run as part
+of our CI jobs. This means that some of the information submitted as part of
+<a href="https://bestpractices.coreinfrastructure.org/projects/1084">CII best practices badging</a> was not accurate. This has been corrected,
+and after review we concluded that only stylistic issues were discovered by
+static analysis. opencontainers/umoci#158</li>
+<li>32-bit unit test builds were broken in a refactor in <a href="https://github.com/opencontainers/umoci/compare/v0.2.1...v0.3.0">0.3.0</a>. This has been
+fixed, and we&rsquo;ve added tests to our CI to ensure that something like this
+won&rsquo;t go unnoticed in the future. opencontainers/umoci#157</li>
+<li><code>umoci unpack</code> would not correctly preserve set{uid,gid} bits. While this
+would not cause issues when building an image (as we only create a manifest
+of the final extracted rootfs), it would cause issues for other users of
+<code>umoci</code>. opencontainers/umoci#166 opencontainers/umoci#169</li>
+<li>Updated to <a href="https://github.com/vbatts/go-mtree/releases/tag/v0.4.1">v0.4.1 of <code>go-mtree</code></a>, which fixes several minor
+bugs with manifest generation. opencontainers/umoci#176</li>
+<li><code>umoci unpack</code> would not handle &ldquo;weird&rdquo; tar archive layers previously (it
+would error out with DiffID errors). While this wouldn&rsquo;t cause issues for
+layers generated using Go&rsquo;s <code>archive/tar</code> implementation, it would cause
+issues for GNU gzip and other such tools. opencontainers/umoci#178
+opencontainers/umoci#179</li>
+</ul>
+<h3 id="changed-">Changed</h3>
+<ul>
+<li><code>umoci unpack</code>'s mapping options (<code>--uid-map</code> and <code>--gid-map</code>) have had an
+interface change, to better match the <a href="http://man7.org/linux/man-pages/man7/user_namespaces.7.html"><code>user_namespaces(7)</code></a>
+interfaces. Note that this is a <strong>breaking change</strong>, but the workaround is to
+switch to the trivially different (but now more consistent) format.
+opencontainers/umoci#167</li>
+</ul>
+<h3 id="security-">Security</h3>
+<ul>
+<li><code>umoci unpack</code> used to create the bundle and rootfs with world
+read-and-execute permissions by default. This could potentially result in an
+unsafe rootfs (containing dangerous setuid binaries for instance) being
+accessible by an unprivileged user. This has been fixed by always setting the
+mode of the bundle to <code>0700</code>, which requires a user to explicitly work around
+this basic protection. This scenario was documented in our security
+documentation previously, but has now been fixed. opencontainers/umoci#181
+opencontainers/umoci#182</li>
+</ul>
+<h2 id="030---2017-07-20-"><a href="https://github.com/opencontainers/umoci/compare/v0.2.1...v0.3.0">0.3.0</a> - 2017-07-20</h2>
+<h3 id="added--6">Added</h3>
+<ul>
+<li><code>umoci</code> now passes all of the requirements for the <a href="https://bestpractices.coreinfrastructure.org/projects/1084">CII best practices bading
+program</a>. opencontainers/umoci#134</li>
+<li><code>umoci</code> also now has more extensive architecture, quick-start and roadmap
+documentation. opencontainers/umoci#134</li>
+<li><code>umoci</code> now supports <a href="https://github.com/opencontainers/image-spec/releases/tag/v1.0.0"><code>1.0.0</code> of the OCI image
+specification</a> and <a href="https://github.com/opencontainers/runtime-spec/releases/tag/v1.0.0"><code>1.0.0</code> of the OCI runtime
+specification</a>, which are the first milestone release. Note
+that there are still some remaining UX issues with <code>--image</code> and other parts
+of <code>umoci</code> which may be subject to change in future versions. In particular,
+this update of the specification now means that images may have ambiguous
+tags. <code>umoci</code> will warn you if an operation may have an ambiguous result, but
+we plan to improve this functionality far more in the future.
+opencontainers/umoci#133 opencontainers/umoci#142</li>
+<li><code>umoci</code> also now supports more complicated descriptor walk structures, and
+also handles mutation of such structures more sanely. At the moment, this
+functionality has not been used &ldquo;in the wild&rdquo; and <code>umoci</code> doesn&rsquo;t have the UX
+to create such structures (yet) but these will be implemented in future
+versions. opencontainers/umoci#145</li>
+<li><code>umoci repack</code> now supports <code>--mask-path</code> to ignore changes in the rootfs
+that are in a child of at least one of the provided masks when generating new
+layers. opencontainers/umoci#127</li>
+</ul>
+<h3 id="changed--1">Changed</h3>
+<ul>
+<li>Error messages from <code>github.com/opencontainers/umoci/oci/cas/drivers/dir</code> actually
+make sense now. opencontainers/umoci#121</li>
+<li><code>umoci unpack</code> now generates <code>config.json</code> blobs according to the <a href="https://github.com/opencontainers/image-spec/pull/492">still
+proposed</a> OCI image specification conversion document.
+opencontainers/umoci#120</li>
+<li><code>umoci repack</code> also now automatically adding <code>Config.Volumes</code> from the image
+configuration to the set of masked paths.  This matches recently added
+<a href="https://github.com/opencontainers/image-spec/pull/694">recommendations by the spec</a>, but is a backwards-incompatible
+change because the new default is that <code>Config.Volumes</code> <strong>will</strong> be masked.
+If you wish to retain the old semantics, use <code>--no-mask-volumes</code> (though make
+sure to be aware of the reasoning behind <code>Config.Volume</code> masking).
+opencontainers/umoci#127</li>
+<li><code>umoci</code> now uses <a href="https://github.com/cyphar/filepath-securejoin"><code>SecureJoin</code></a> rather than a patched version of
+<code>FollowSymlinkInScope</code>. The two implementations are roughly equivalent, but
+<code>SecureJoin</code> has a nicer API and is maintained as a separate project.</li>
+<li>Switched to using <code>golang.org/x/sys/unix</code> over <code>syscall</code> where possible,
+which makes the codebase significantly cleaner. opencontainers/umoci#141</li>
+</ul>
+<h2 id="021---2017-04-12-"><a href="https://github.com/opencontainers/umoci/compare/v0.2.0...v0.2.1">0.2.1</a> - 2017-04-12</h2>
+<h3 id="added--7">Added</h3>
+<ul>
+<li><code>hack/release.sh</code> automates the process of generating all of the published
+artefacts for releases. The new script also generates signed source code
+archives. opencontainers/umoci#116</li>
+</ul>
+<h3 id="changed--2">Changed</h3>
+<ul>
+<li><code>umoci</code> now outputs configurations that are compliant with <a href="https://github.com/opencontainers/runtime-spec/releases/tag/v1.0.0-rc5"><code>v1.0.0-rc5</code> of
+the OCI runtime-spec</a>. This means that now you can use runc
+v1.0.0-rc3 with <code>umoci</code> (and rootless containers should work out of the box
+if you use a development build of runc). opencontainers/umoci#114</li>
+<li><code>umoci unpack</code> no longer adds a dummy linux.seccomp entry, and instead just
+sets it to null. opencontainers/umoci#114</li>
+</ul>
+<h2 id="020---2017-04-11-"><a href="https://github.com/opencontainers/umoci/compare/v0.1.0...v0.2.0">0.2.0</a> - 2017-04-11</h2>
+<h3 id="added--8">Added</h3>
+<ul>
+<li><code>umoci</code> now has some automated scripts for generated RPMs that are used in
+openSUSE to automatically submit packages to OBS. opencontainers/umoci#101</li>
+<li><code>--clear=config.{cmd,entrypoint}</code> is now supported. While this interface is a
+bit weird (<code>cmd</code> and <code>entrypoint</code> aren&rsquo;t treated atomically) this makes the
+UX more consistent while we come up with a better <code>cmd</code> and <code>entrypoint</code> UX.
+opencontainers/umoci#107</li>
+<li>New subcommand: <code>umoci raw runtime-config</code>. It generates the runtime-spec
+config.json for a particular image without also unpacking the root
+filesystem, allowing for users of <code>umoci</code> that are regularly parsing
+<code>config.json</code> without caring about the root filesystem to be more efficient.
+However, a downside of this approach is that some image-spec fields
+(<code>Config.User</code>) require a root filesystem in order to make sense, which is
+why this command is hidden under the <code>umoci-raw(1)</code> subcommand (to make sure
+only users that understand what they&rsquo;re doing use it). opencontainers/umoci#110</li>
+</ul>
+<h3 id="changed--3">Changed</h3>
+<ul>
+<li><code>umoci</code>'s <code>oci/cas</code> and <code>oci/config</code> libraries have been massively refactored
+and rewritten, to allow for third-parties to use the OCI libraries. The plan
+is for these to eventually become part of an OCI project. opencontainers/umoci#90</li>
+<li>The <code>oci/cas</code> interface has been modifed to switch from <code>*ispec.Descriptor</code>
+to <code>ispec.Descriptor</code>. This is a breaking, but fairly insignificant, change.
+opencontainers/umoci#89</li>
+</ul>
+<h3 id="fixed--5">Fixed</h3>
+<ul>
+<li><code>umoci</code> now uses an updated version of <code>go-mtree</code>, which has a complete
+rewrite of <code>Vis</code> and <code>Unvis</code>. The rewrite ensures that unicode handling is
+handled in a far more consistent and sane way. opencontainers/umoci#88</li>
+<li><code>umoci</code> used to set <code>process.user.additionalGids</code> to the &ldquo;normal value&rdquo; when
+unpacking an image in rootless mode, causing issues when trying to actually
+run said bundle with runC. opencontainers/umoci#109</li>
+</ul>
+<h2 id="010---2017-02-11-"><a href="https://github.com/opencontainers/umoci/compare/v0.0.0...v0.1.0">0.1.0</a> - 2017-02-11</h2>
+<h3 id="added--9">Added</h3>
+<ul>
+<li><code>CHANGELOG.md</code> has now been added. opencontainers/umoci#76</li>
+</ul>
+<h3 id="changed--4">Changed</h3>
+<ul>
+<li><code>umoci</code> now supports <code>v1.0.0-rc4</code> images, which has made fairly minimal
+changes to the schema (mainly related to <code>mediaType</code>s). While this change
+<strong>is</strong> backwards compatible (several fields were removed from the schema, but
+the specification allows for &ldquo;additional fields&rdquo;), tools using older versions
+of the specification may fail to operate on newer OCI images. There was no UX
+change associated with this update.</li>
+</ul>
+<h3 id="fixed--6">Fixed</h3>
+<ul>
+<li><code>umoci tag</code> would fail to clobber existing tags, which was in contrast to how
+the rest of the tag clobbering commands operated. This has been fixed and is
+now consistent with the other commands. opencontainers/umoci#78</li>
+<li><code>umoci repack</code> now can correctly handle unicode-encoded filenames, allowing
+the creation of containers that have oddly named files. This required fixes
+to go-mtree (where the issue was). opencontainers/umoci#80</li>
+</ul>
+<h2 id="000---2017-02-07-"><a href="https://github.com/opencontainers/umoci/compare/v0.0.0-rc3...v0.0.0">0.0.0</a> - 2017-02-07</h2>
+<h3 id="added--10">Added</h3>
+<ul>
+<li>Unit tests are massively expanded, as well as the integration tests.
+opencontainers/umoci#68 opencontainers/umoci#69</li>
+<li>Full coverage profiles (unit+integration) are generated to get all
+information about how much code is tested. opencontainers/umoci#68
+opencontainers/umoci#69</li>
+</ul>
+<h3 id="fixed--7">Fixed</h3>
+<ul>
+<li>Static compilation now works properly. opencontainers/umoci#64</li>
+<li>32-bit architecture builds are fixed. opencontainers/umoci#70</li>
+</ul>
+<h3 id="changed--5">Changed</h3>
+<ul>
+<li>Unit tests can now be run inside <code>%check</code> of an <code>rpmbuild</code> script, allowing
+for proper testing. opencontainers/umoci#65.</li>
+<li>The logging output has been cleaned up to be much nicer for end-users to
+read. opencontainers/umoci#73</li>
+<li>Project has been moved to an openSUSE project. opencontainers/umoci#75</li>
+</ul>
+<h2 id="000-rc3---2016-12-19-"><a href="https://github.com/opencontainers/umoci/compare/v0.0.0-rc2...v0.0.0-rc3">0.0.0-rc3</a> - 2016-12-19</h2>
+<h3 id="added--11">Added</h3>
+<ul>
+<li><code>unpack</code>, <code>repack</code>: <code>xattr</code> support which also handles <code>security.selinux.*</code>
+difficulties. opencontainers/umoci#49 opencontainers/umoci#52</li>
+<li><code>config</code>, <code>unpack</code>: Ensure that environment variables are not duplicated in
+the extracted or stored configurations. opencontainers/umoci#30</li>
+<li>Add support for read-only CAS operations for read-only filesystems.
+opencontainers/umoci#47</li>
+<li>Add some helpful output about <code>--rootless</code> if <code>umoci</code> fails with <code>EPERM</code>.</li>
+<li>Enable stack traces with errors if the <code>--debug</code> flag was given to <code>umoci</code>.
+This requires a patch to <code>pkg/errors</code>.</li>
+</ul>
+<h3 id="changed--6">Changed</h3>
+<ul>
+<li><code>gc</code>: Garbage collection now also garbage collects temporary directories.
+opencontainers/umoci#17</li>
+<li>Clean-ups to vendoring of <code>go-mtree</code> so that it&rsquo;s much more
+upstream-friendly.</li>
+</ul>
+<h2 id="000-rc2---2016-12-12-"><a href="https://github.com/opencontainers/umoci/compare/v0.0.0-rc1...v0.0.0-rc2">0.0.0-rc2</a> - 2016-12-12</h2>
+<h3 id="added--12">Added</h3>
+<ul>
+<li><code>unpack</code>, <code>repack</code>: Support for rootless unpacking and repacking.
+opencontainers/umoci#26</li>
+<li><code>unpack</code>, <code>repack</code>: UID and GID mapping when unpacking and repacking.
+opencontainers/umoci#26</li>
+<li><code>tag</code>, <code>rm</code>, <code>ls</code>: Tag modification commands such as <code>umoci tag</code>, <code>umoci rm</code>
+and <code>umoci ls</code>. opencontainers/umoci#6 opencontainers/umoci#27</li>
+<li><code>stat</code>: Output information about an image. Currently only shows the history
+information. Only the <strong>JSON</strong> output is stable. opencontainers/umoci#38</li>
+<li><code>init</code>, <code>new</code>: New commands have been created to allow for image creation
+from scratch. opencontainers/umoci#5 opencontainers/umoci#42</li>
+<li><code>gc</code>: Garbage collection of images. opencontainers/umoci#6</li>
+<li>Full integration and unit testing, with OCI validation to ensure that we
+always create valid images. opencontainers/umoci#12</li>
+</ul>
+<h3 id="changed--7">Changed</h3>
+<ul>
+<li><code>unpack</code>, <code>repack</code>: Create history entries automatically (with options to
+modify the entries). opencontainers/umoci#36</li>
+<li><code>unpack</code>: Store information about its source to ensure consistency when doing
+a <code>repack</code>. opencontainers/umoci#14</li>
+<li>The <code>--image</code> and <code>--from</code> arguments have been combined into a single
+<code>&lt;path&gt;[:&lt;tag&gt;]</code> argument for <code>--image</code>. opencontainers/umoci#39</li>
+<li><code>unpack</code>: Configuration annotations are now extracted, though there are still
+some discussions happening upstream about the correct way of doing this.
+opencontainers/umoci#43</li>
+</ul>
+<h3 id="fixed--8">Fixed</h3>
+<ul>
+<li><code>repack</code>: Errors encountered during generation of delta layers are now
+correctly propagated. opencontainers/umoci#33</li>
+<li><code>unpack</code>: Hardlinks are now extracted as real hardlinks. opencontainers/umoci#25</li>
+</ul>
+<h3 id="security--1">Security</h3>
+<ul>
+<li><code>unpack</code>, <code>repack</code>: Symlinks are now correctly resolved inside the unpacked
+rootfs. opencontainers/umoci#27</li>
+</ul>
+<h2 id="000-rc1---2016-11-10-">0.0.0-rc1 - 2016-11-10</h2>
+<h3 id="added--13">Added</h3>
+<ul>
+<li>Proof of concept with major functionality implemented.
+<ul>
+<li><code>unpack</code></li>
+<li><code>repack</code></li>
+<li><code>config</code></li>
+</ul>
+</li>
+</ul>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/meta/" title="Meta"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/meta/contributing/" title="Contribution Guidelines" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1592353471"></script>
+    <script src="/js/perfect-scrollbar.min.js?1592353471"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1592353471"></script>
+    <script src="/js/jquery.sticky.js?1592353471"></script>
+    <script src="/js/featherlight.min.js?1592353471"></script>
+    <script src="/js/highlight.pack.js?1592353471"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1592353471"></script>
+    <script src="/js/learn.js?1592353471"></script>
+    <script src="/js/hugo-learn.js?1592353471"></script>
+
+    <link href="/mermaid/mermaid.css?1592353471" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1592353471"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

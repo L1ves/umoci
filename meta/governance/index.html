@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Security Considerations :: umoci</title>
+    <title>Governance :: umoci</title>
 
     
     <link href="/css/nucleus.css?1592353471" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/reference/security/">
+  <body class="" data-url="/meta/governance/">
     <nav id="sidebar" class="">
 
 
@@ -277,7 +277,7 @@
   
     
     <li data-nav-id="/meta/" title="Meta" class="dd-item 
-        
+        parent
         
         
         ">
@@ -345,7 +345,7 @@
  
   
     
-      <li data-nav-id="/meta/governance/" title="Governance" class="dd-item ">
+      <li data-nav-id="/meta/governance/" title="Governance" class="dd-item active">
         <a href="/meta/governance/">
         Governance
         
@@ -395,7 +395,7 @@
   
     
     <li data-nav-id="/reference/" title="Reference" class="dd-item 
-        parent
+        
         
         
         ">
@@ -463,7 +463,7 @@
  
   
     
-      <li data-nav-id="/reference/security/" title="Security Considerations" class="dd-item active">
+      <li data-nav-id="/reference/security/" title="Security Considerations" class="dd-item ">
         <a href="/reference/security/">
         Security Considerations
         
@@ -542,7 +542,7 @@
             
           
           
-            <a href='/'></a> > <a href='/reference/'>Reference</a> > Security Considerations
+            <a href='/'></a> > <a href='/meta/'>Meta</a> > Governance
           
         
           
@@ -557,11 +557,12 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#governance-model-">Governance Model</a>
       <ul>
-        <li><a href="#path-traversal-">Path Traversal</a></li>
-        <li><a href="#arbitrary-inode-and-mode-creation-">Arbitrary Inode and Mode Creation</a></li>
-        <li><a href="#compression-bomb-attacks-">Compression Bomb Attacks</a></li>
+        <li><a href="#code-of-conduct-">Code of Conduct</a></li>
+        <li><a href="#code-changes-">Code Changes</a></li>
+        <li><a href="#releases-">Releases</a></li>
+        <li><a href="#other-changes-">Other Changes</a></li>
       </ul>
     </li>
   </ul>
@@ -581,113 +582,111 @@
           
             <h1>
               
-              Security Considerations
+              Governance
             </h1>
           
 
         
 
 
-<p>umoci is entrusted with taking a particular image and expanding it on the
-filesystem (as well as computing deltas of the expanded filesystem). As a
-result, umoci must be very careful about filesystem access to avoid
-vulnerabilities that may impact other components of the system. If you feel
-something is missing from this document, feel free to
-<a href="/contributing">contribute</a>.</p>
-<p>If you&rsquo;ve found a security flaw in umoci that comes from a security
-consideration we haven&rsquo;t considered before, please follow our instructions on
-<a href="/contributing">how to responsibly disclose a security issue</a>. Once it has
-been resolved, feel free to contribute to this document a description of the
-consideration that we were missing.</p>
-<h3 id="path-traversal-">Path Traversal</h3>
-<p>The most obvious vulnerabilities that umoci has to protect against is path
-traversal vulnerabilities. However, path traversal vulnerabilities in umoci
-are even more dangerous because umoci has to emulate a <code>chroot</code> when
-interacting with the filesystem (as well as never mutating inodes in case it
-may be referenced by a path external to the root filesystem).</p>
+<h2 id="governance-model-">Governance Model</h2>
+<p>umoci is an OCI project, and is thus governed under the <a href="https://github.com/opencontainers/tob/blob/master/CHARTER.md">OCI
+Charter</a>. §5(b)(viii) of the Charter tasks the maintainers of
+each OCI Project with:</p>
 <blockquote>
-<p><strong>NOTE</strong>: Users are expected to appreciate the risks of interacting with a
-foreign filesystem rootfs, if they intend to not use a virtualization system
-such as <code>chroot</code> or containers when interacting with the rootfs umoci has
-expanded.</p>
+<p>Creating, maintaining and enforcing governance guidelines for the TDC [of
+that OCI Project], approved by the maintainers, and which shall be posted
+visibly for the TDC [of that OCI Project].</p>
 </blockquote>
-<p>There are multiple ways that umoci defends against this. The first and most
-important is that all path computation of destination and source paths is done
-using the <a href="https://github.com/cyphar/filepath-securejoin"><code>filepath-securejoin</code></a> library (which was written by the
-author of umoci<sup><a href="#foot1">1</a></sup>). <code>filepath-securejoin</code> solves this
-problem by effectively implementing a variant of <code>filepath.EvalSymlinks</code> except
-that all symlink and lexical evaluation is done manually within a particular
-scope. We have extensive testing (in both projects) to show that a variety of
-attacks will not succeed against our implementation.</p>
-<p>In addition, umoci has a series of sanity checks that ensures that operations
-that involve modifying the filesystem based on arbitrary image input will not
-affect anything outside of the intended directory root. These additions are
-purely defensive in nature, as <code>filepath-securejoin</code> handles all known
-instances of path traversal attacks in this context.</p>
-<p>umoci <strong>does not</strong> attempt to be safe against shared filesystem access during
-an <code>unpack</code> or <code>repack</code> operation. This is because it is not possible with any
-modern Unix<sup><a href="#foot2">2</a></sup> system to safely ensure that a particular
-user-space path evaluation will be atomic (nor that the returned result cannot
-later become unsafe given further filesystem manipulation). Once an <code>unpack</code> or
-<code>repack</code> operation has completed, arbitrary filesystem modification of the root
-filesystem will not cause umoci to act unsafely in future operations.</p>
-<p>umoci also defends against inode mutation by always replacing inodes. This
-actually makes the code simpler, but makes sure that hardlinks to inodes inside
-a root filesystem won&rsquo;t see any modifications because of umoci (not that
-umoci currently permits unpacking into existing directories).</p>
-<p><a name="foot1">1</a>: The implementation linked is loosely based on Docker&rsquo;s
-implementation of a similar concept (to protect against similar path
-traversals). Interestingly, the security vulnerabilities that alerted Docker to
-this issue several years ago were discovered and fixed by this author as well.</p>
-<p><a name="foot2">2</a>: Interestingly, Plan9 has effectively solved this problem
-by removing symlinks and instead using namespaces. However, umoci&rsquo;s main user
-demographic is not Plan9 so this tid-bit is not of much use to us.</p>
-<h3 id="arbitrary-inode-and-mode-creation-">Arbitrary Inode and Mode Creation</h3>
-<p>Note that this attack is only applicable if umoci is being executed as a
-<strong>privileged user</strong> (on GNU/Linux this means having <code>CAP_SYS_ADMIN</code> and a host
-of other capabilities). umoci running in rootless mode cannot create
-arbitrary inodes due to ordinary access control implemented by the operating
-system (umoci only uses standard VFS operations to implement rootless mode,
-which have very well-understood access control restrictions).</p>
-<p>Effectively this attack boils down to the fact that a <code>tar</code> archive (which is
-what makes up the layers in OCI images) contains inode information that can be
-used to cause umoci to create block devices with arbitrary major and minor
-numbers. In the absolute worst case, this could allow a user to create a
-world-writeable inode that corresponds to the host&rsquo;s hard-drive (or
-<code>/dev/kmem</code>). There are a variety of other possible attacks that can occur.
-Note that the default umoci runtime configuration defends against containers
-from being able to mess with such files, but this doesn&rsquo;t help against
-host-side attackers. This attack also could be used to provide an unprivileged
-user (in the host) access unsafe set-uid binaries, allowing for possible
-privilege escalation.</p>
-<p>umoci&rsquo;s defence against this attack is to make the <code>bundle</code> directory <code>chmod go-rwx</code> which will ensure that unprivileged users won&rsquo;t be able to resolve the
-dangerous inode or setuid binary (note that bind-mounts can circumvent this,
-but a user cannot create a bind-mount without being able to resolve the path).</p>
-<h3 id="compression-bomb-attacks-">Compression Bomb Attacks</h3>
-<p>OCI images specifically require implementations to support layers compressed
-with <code>gzip</code>. This results in <a href="https://www.rapid7.com/db/modules/auxiliary/dos/http/gzip_bomb_dos">gzip bomb attacks</a> being potentially
-practical. In the worst cases this can result in denial-of-service attacks, if
-umoci is run in a context without any storage or I/O quotas.</p>
-<p>umoci uses the <a href="https://golang.org/pkg/compress/gzip/">Go standard library implementation of <code>gzip</code></a>, which
-<em>does not appear</em> to support multiple-round decompression. This somewhat
-reduces the amplification nature of this attack, but the attack is still
-present.</p>
-<p><strong>umoci currently has no specific defences against this attack.</strong> There is a
-very trivial solution that we can add, which is a <code>--maximum-layer-size</code> flag
-that will abort an <code>unpack</code> operation if any single layer is deemed too large.
-Unfortunately, it does not seem reasonable to enable such an option for all
-<code>unpack</code> operations, and picking a reasonable default is an even more serious
-concern. There does not appear to be much analysis on heuristics that can be
-used to detect compression bombs, but I am under the impression that that would
-be the only reasonable way to detect this in the general case (a heuristic
-based on the Shannon entropy or the compression ratio would be very
-interesting).</p>
-<p>A workaround for this problem is to place umoci inside of the relevant
-cgroups so that it will not drain the system resources too heavily if
-encountering a compression bomb. As mentioned above, detecting generic
-compression bombs does not appear to be a solved problem, so this workaround
-only helps to reduce the impact and does not mitigate it.</p>
-
+<p>This document describes the governance rules for umoci, and is the
+authortiative document that describes the governance procedure for umoci. Any
+change to this document requires a motion and vote (as described below) in
+order to be a valid modification of this governance document.</p>
+<p>If there are any perceived or real conflicts between this document and the OCI
+Charter, the OCI Charter takes precedence.</p>
+<h3 id="code-of-conduct-">Code of Conduct</h3>
+<p>The conduct of all members of the umoci TDC MUST abide by the Open Containers
+Initative&rsquo;s <a href="https://github.com/opencontainers/.github/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a>.</p>
+<h3 id="code-changes-">Code Changes</h3>
+<p>Any code or documentation changes to the umoci codebase will be made via <a href="https://github.com/opencontainers/umoci/compare">pull
+requests</a>. All proposed changes MUST contain a &ldquo;Signed-off-by&rdquo; line,
+indicating that the contribution abides by the <a href="https://developercertificate.org/">Developer Certificate of
+Origin</a>.</p>
+<p>In order for a change to be accepted into the umoci codebase, it MUST be
+reviewed and accepted by two (2) maintainers (individuals who are listed in the
+<code>MAINTAINERS</code> file at the root of the umoci repository). Maintainers indicate
+their approval through the use of an &ldquo;LGTM&rdquo; comment. Maintainers MAY formally
+reject a comment by posting &ldquo;NACK&rdquo;, but this is only an indication to other
+maintainers of their view and has no impact on the two-LGTM rule. If a
+contribution was authored by a maintainer, they MAY approve their own change
+(meaning that only one (1) additional maintainer need review and approve it).
+Merge commits SHOULD include information about which maintainers approved the
+change.</p>
+<p>The above review procedure MAY be done in private for patches fixing security
+issues, but the set of maintainers which approved the patches MUST be publicly
+known after the patch has been merged into the repository (such as listing them
+in the merge commit). All private reviews MUST be done via email, with the
+<a href="mailto:security@opencontainers.org">security@opencontainers.org</a> mailing list in Cc to ensure that this system is
+not being abused.</p>
+<p>Recommendations for contributors may be found in
+<a href="/CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a>.</p>
+<h3 id="releases-">Releases</h3>
+<p>umoci uses <a href="https://semver.org/">Semantic Versioning</a>, and all releases MUST follow the
+SemVer definition of major, minor, and patch releases. The general procedure
+for preparing a new release is described in <a href="/RELEASES.md"><code>RELEASES.md</code></a>, but all
+releases MUST have a specific commit which will be tagged as the release.</p>
+<p>A pull request is opened by the individual proposing a release, and then voting
+is conducted on the release. There are two procedures depending on which part
+of the version number is being proposed to change:</p>
+<ul>
+<li>
+<p>If the major number is being changed from the previous release, a formal
+vote as described below is required. Due to their disruptive nature, major
+updates SHOULD be done only in exceptional circumstances after umoci <code>1.0.0</code>
+has been released, and SHOULD be done after significant discussion and
+agremeent between all umoci maintainers and the umoci TDC.</p>
+</li>
+<li>
+<p>If the minor or patch number (but not the major number) are being changed,
+then the release MAY be approved by the simplified two-LGTM requirement as
+required by ordinary code changes.</p>
+</li>
+</ul>
+<p>All releases SHOULD be announced on the <a href="mailto:dev@opencontainers.org">dev@opencontainers.org</a> mailing list,
+and the release artefacts SHOULD be made available as soon as possible.</p>
+<h3 id="other-changes-">Other Changes</h3>
+<p>All other changes to the umoci project (such as the modification of this
+document or the addition or removal of maintainers) require a formal voting
+procedure. Any individual MAY propose a motion (either by creating an issue in
+the project&rsquo;s issue tracker, or posting a message on the
+<a href="mailto:dev@opencontainers.org">dev@opencontainers.org</a> mailing list) but only maintainers&rsquo; votes on the
+motion are considered. Any motion which involves merging a change into the
+codebase (such as motions to change this document, or change the major version
+number of umoci) MUST include the specific commit which is being proposed for
+merging.</p>
+<p>All votes MUST have a reasonable deadline (two (2) weeks is most common) listed
+when the motion is first posted, and the deadline is chosen by the initiator of
+the motion.</p>
+<p>If the motion is posted to the mailing list, the subject line SHOULD be:</p>
+<pre><code>[umoci VOTE] {motion description} (closes {deadline})
+</code></pre><p>But if the motion is posted as an issue, then the subject SHOULD begin with the
+prefix <code>[VOTE]</code>.</p>
+<p>In order for a motion to pass, a qualified super-majority (at least two-thirds,
+with abstain and non-votes counting as votes <em>against</em> the motion) of the
+project&rsquo;s maintainers MUST vote in favour of the motion. Votes MUST be
+indicated as follows:</p>
+<ul>
+<li>Votes in favour with &ldquo;LGTM&rdquo; or &ldquo;+1&rdquo;.</li>
+<li>Votes against with &ldquo;NACK&rdquo;, &ldquo;REJECT&rdquo;, or &ldquo;-1&rdquo;.</li>
+<li>Abstain votes with &ldquo;ABSTAIN&rdquo;.</li>
+</ul>
+<p>Maintainers MAY vote multiple times, with their final vote (at the close of the
+voting period) being treated as their decision.</p>
+<p>Once a vote has completed, the vote totals and a brief description of the
+motion MUST be posted on the <a href="mailto:dev@opencontainers.org">dev@opencontainers.org</a> mailing list. The subject
+line of the vote tally SHOULD be:</p>
+<pre><code>[umoci {ACCEPTED|REJECTED}] {motion description} (+{LGTMs} -{REJECTs} #{ABSTAINs})
+</code></pre>
 
 <footer class="footline">
 	
@@ -855,86 +854,6 @@ only helps to reduce the impact and does not mitigate it.</p>
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -984,6 +903,89 @@ only helps to reduce the impact and does not mitigate it.</p>
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1008,10 +1010,10 @@ only helps to reduce the impact and does not mitigate it.</p>
 	 
 	 
 		
-			<a class="nav nav-prev" href="/reference/architecture/" title="Architecture"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/meta/contributing/" title="Contribution Guidelines"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/reference/roadmap/" title="Roadmap" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/meta/releases/" title="Release Procedure" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

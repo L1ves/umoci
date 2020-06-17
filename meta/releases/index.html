@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Security Considerations :: umoci</title>
+    <title>Release Procedure :: umoci</title>
 
     
     <link href="/css/nucleus.css?1592353471" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/reference/security/">
+  <body class="" data-url="/meta/releases/">
     <nav id="sidebar" class="">
 
 
@@ -277,7 +277,7 @@
   
     
     <li data-nav-id="/meta/" title="Meta" class="dd-item 
-        
+        parent
         
         
         ">
@@ -366,7 +366,7 @@
  
   
     
-      <li data-nav-id="/meta/releases/" title="Release Procedure" class="dd-item ">
+      <li data-nav-id="/meta/releases/" title="Release Procedure" class="dd-item active">
         <a href="/meta/releases/">
         Release Procedure
         
@@ -395,7 +395,7 @@
   
     
     <li data-nav-id="/reference/" title="Reference" class="dd-item 
-        parent
+        
         
         
         ">
@@ -463,7 +463,7 @@
  
   
     
-      <li data-nav-id="/reference/security/" title="Security Considerations" class="dd-item active">
+      <li data-nav-id="/reference/security/" title="Security Considerations" class="dd-item ">
         <a href="/reference/security/">
         Security Considerations
         
@@ -542,7 +542,7 @@
             
           
           
-            <a href='/'></a> > <a href='/reference/'>Reference</a> > Security Considerations
+            <a href='/'></a> > <a href='/meta/'>Meta</a> > Release Procedure
           
         
           
@@ -557,11 +557,13 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#release-procedure-">Release Procedure</a>
       <ul>
-        <li><a href="#path-traversal-">Path Traversal</a></li>
-        <li><a href="#arbitrary-inode-and-mode-creation-">Arbitrary Inode and Mode Creation</a></li>
-        <li><a href="#compression-bomb-attacks-">Compression Bomb Attacks</a></li>
+        <li><a href="#changelog-">Changelog</a></li>
+        <li><a href="#pull-request-">Pull Request</a></li>
+        <li><a href="#release-notes-">Release Notes</a></li>
+        <li><a href="#tag-">Tag</a></li>
+        <li><a href="#artefacts-">Artefacts</a></li>
       </ul>
     </li>
   </ul>
@@ -581,112 +583,81 @@
           
             <h1>
               
-              Security Considerations
+              Release Procedure
             </h1>
           
 
         
 
 
-<p>umoci is entrusted with taking a particular image and expanding it on the
-filesystem (as well as computing deltas of the expanded filesystem). As a
-result, umoci must be very careful about filesystem access to avoid
-vulnerabilities that may impact other components of the system. If you feel
-something is missing from this document, feel free to
-<a href="/contributing">contribute</a>.</p>
-<p>If you&rsquo;ve found a security flaw in umoci that comes from a security
-consideration we haven&rsquo;t considered before, please follow our instructions on
-<a href="/contributing">how to responsibly disclose a security issue</a>. Once it has
-been resolved, feel free to contribute to this document a description of the
-consideration that we were missing.</p>
-<h3 id="path-traversal-">Path Traversal</h3>
-<p>The most obvious vulnerabilities that umoci has to protect against is path
-traversal vulnerabilities. However, path traversal vulnerabilities in umoci
-are even more dangerous because umoci has to emulate a <code>chroot</code> when
-interacting with the filesystem (as well as never mutating inodes in case it
-may be referenced by a path external to the root filesystem).</p>
-<blockquote>
-<p><strong>NOTE</strong>: Users are expected to appreciate the risks of interacting with a
-foreign filesystem rootfs, if they intend to not use a virtualization system
-such as <code>chroot</code> or containers when interacting with the rootfs umoci has
-expanded.</p>
-</blockquote>
-<p>There are multiple ways that umoci defends against this. The first and most
-important is that all path computation of destination and source paths is done
-using the <a href="https://github.com/cyphar/filepath-securejoin"><code>filepath-securejoin</code></a> library (which was written by the
-author of umoci<sup><a href="#foot1">1</a></sup>). <code>filepath-securejoin</code> solves this
-problem by effectively implementing a variant of <code>filepath.EvalSymlinks</code> except
-that all symlink and lexical evaluation is done manually within a particular
-scope. We have extensive testing (in both projects) to show that a variety of
-attacks will not succeed against our implementation.</p>
-<p>In addition, umoci has a series of sanity checks that ensures that operations
-that involve modifying the filesystem based on arbitrary image input will not
-affect anything outside of the intended directory root. These additions are
-purely defensive in nature, as <code>filepath-securejoin</code> handles all known
-instances of path traversal attacks in this context.</p>
-<p>umoci <strong>does not</strong> attempt to be safe against shared filesystem access during
-an <code>unpack</code> or <code>repack</code> operation. This is because it is not possible with any
-modern Unix<sup><a href="#foot2">2</a></sup> system to safely ensure that a particular
-user-space path evaluation will be atomic (nor that the returned result cannot
-later become unsafe given further filesystem manipulation). Once an <code>unpack</code> or
-<code>repack</code> operation has completed, arbitrary filesystem modification of the root
-filesystem will not cause umoci to act unsafely in future operations.</p>
-<p>umoci also defends against inode mutation by always replacing inodes. This
-actually makes the code simpler, but makes sure that hardlinks to inodes inside
-a root filesystem won&rsquo;t see any modifications because of umoci (not that
-umoci currently permits unpacking into existing directories).</p>
-<p><a name="foot1">1</a>: The implementation linked is loosely based on Docker&rsquo;s
-implementation of a similar concept (to protect against similar path
-traversals). Interestingly, the security vulnerabilities that alerted Docker to
-this issue several years ago were discovered and fixed by this author as well.</p>
-<p><a name="foot2">2</a>: Interestingly, Plan9 has effectively solved this problem
-by removing symlinks and instead using namespaces. However, umoci&rsquo;s main user
-demographic is not Plan9 so this tid-bit is not of much use to us.</p>
-<h3 id="arbitrary-inode-and-mode-creation-">Arbitrary Inode and Mode Creation</h3>
-<p>Note that this attack is only applicable if umoci is being executed as a
-<strong>privileged user</strong> (on GNU/Linux this means having <code>CAP_SYS_ADMIN</code> and a host
-of other capabilities). umoci running in rootless mode cannot create
-arbitrary inodes due to ordinary access control implemented by the operating
-system (umoci only uses standard VFS operations to implement rootless mode,
-which have very well-understood access control restrictions).</p>
-<p>Effectively this attack boils down to the fact that a <code>tar</code> archive (which is
-what makes up the layers in OCI images) contains inode information that can be
-used to cause umoci to create block devices with arbitrary major and minor
-numbers. In the absolute worst case, this could allow a user to create a
-world-writeable inode that corresponds to the host&rsquo;s hard-drive (or
-<code>/dev/kmem</code>). There are a variety of other possible attacks that can occur.
-Note that the default umoci runtime configuration defends against containers
-from being able to mess with such files, but this doesn&rsquo;t help against
-host-side attackers. This attack also could be used to provide an unprivileged
-user (in the host) access unsafe set-uid binaries, allowing for possible
-privilege escalation.</p>
-<p>umoci&rsquo;s defence against this attack is to make the <code>bundle</code> directory <code>chmod go-rwx</code> which will ensure that unprivileged users won&rsquo;t be able to resolve the
-dangerous inode or setuid binary (note that bind-mounts can circumvent this,
-but a user cannot create a bind-mount without being able to resolve the path).</p>
-<h3 id="compression-bomb-attacks-">Compression Bomb Attacks</h3>
-<p>OCI images specifically require implementations to support layers compressed
-with <code>gzip</code>. This results in <a href="https://www.rapid7.com/db/modules/auxiliary/dos/http/gzip_bomb_dos">gzip bomb attacks</a> being potentially
-practical. In the worst cases this can result in denial-of-service attacks, if
-umoci is run in a context without any storage or I/O quotas.</p>
-<p>umoci uses the <a href="https://golang.org/pkg/compress/gzip/">Go standard library implementation of <code>gzip</code></a>, which
-<em>does not appear</em> to support multiple-round decompression. This somewhat
-reduces the amplification nature of this attack, but the attack is still
-present.</p>
-<p><strong>umoci currently has no specific defences against this attack.</strong> There is a
-very trivial solution that we can add, which is a <code>--maximum-layer-size</code> flag
-that will abort an <code>unpack</code> operation if any single layer is deemed too large.
-Unfortunately, it does not seem reasonable to enable such an option for all
-<code>unpack</code> operations, and picking a reasonable default is an even more serious
-concern. There does not appear to be much analysis on heuristics that can be
-used to detect compression bombs, but I am under the impression that that would
-be the only reasonable way to detect this in the general case (a heuristic
-based on the Shannon entropy or the compression ratio would be very
-interesting).</p>
-<p>A workaround for this problem is to place umoci inside of the relevant
-cgroups so that it will not drain the system resources too heavily if
-encountering a compression bomb. As mentioned above, detecting generic
-compression bombs does not appear to be a solved problem, so this workaround
-only helps to reduce the impact and does not mitigate it.</p>
+<h2 id="release-procedure-">Release Procedure</h2>
+<p>This document describes the procedure for preparing and publishing an umoci
+release. Note that in order for a release of umoci to be approved, it must
+follow the <a href="/GOVERNANCE.md">approval procedure described in <code>GOVERNANCE.md</code></a>.</p>
+<h3 id="changelog-">Changelog</h3>
+<p>Before anything else, you must update the <code>CHANGELOG.md</code> to match the release.
+This boils down to adding a new header underneath the &ldquo;Unreleased&rdquo; header so
+that all of the changes are listed as being part of the new release.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"> ## [Unreleased]
+<span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+## [X.Y.Z] - 20YY-MM-DD
+</span><span style="color:#a6e22e"></span> - Changed FooBar to correctly Baz.
+</code></pre></div><p>And then the <code>[X.Y.Z]</code> reference needs to be added and the <code>[Unreleased]</code>
+reference updated. These links just show the set of commits added between
+successive versions:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">[Unreleased]: https://github.com/opencontainers/umoci/compare/vX.Y.Z...HEAD
+[X.Y.Z]: https://github.com/opencontainers/umoci/compare/vX.Y.W...vX.Y.Z
+[X.Y.W]: https://github.com/opencontainers/umoci/compare/vX.Y.V...vX.Y.W
+</code></pre></div><p>The changes to <code>CHANGELOG.md</code> will be committed in the next section.</p>
+<h3 id="pull-request-">Pull Request</h3>
+<p>Releases need to be associated with a specific commit, with the release commit
+being voted on by the maintainers (<a href="/GOVERNANCE.md">as described in <code>GOVERNANCE.md</code></a>).
+To prepare the pull request, the following steps are necessary:</p>
+<pre><code class="language-ShellSession" data-lang="ShellSession">% git branch release-X.Y.Z origin/master
+% vi CHANGELOG.md # make the changes outlined above
+% echo &quot;X.Y.Z&quot; &gt; VERSION
+% git commit -asm &quot;VERSION: release X.Y.Z&quot; # this is the release commit
+% echo &quot;X.Y.Z+dev&quot; &gt; VERSION
+% git commit -asm &quot;VERSION: back to development&quot;
+% git push # ...
+</code></pre><p>And then <a href="https://github.com/opencontainers/umoci/compare">open a pull request</a> with the <code>release-X.Y.Z</code> branch. If the
+release requires a formal vote, the vote motion must specify the <strong>release
+commit</strong> which is being considered (preferably both in the body and subject).</p>
+<h3 id="release-notes-">Release Notes</h3>
+<p>The release notes (as published on the <a href="https://github.com/opencontainers/umoci/releases">releases page</a>) are largely
+based on the contents of <code>CHANGELOG.md</code> for the relevant release. However, any
+important information (such as deprecation warnings or security fixes) should
+be included in the release notes above the changelog.</p>
+<p>In addition, the release notes should contain a list of the contributors to the
+release. The simplest way of doing this is to just use the author information
+from Git:</p>
+<pre><code class="language-ShellSession" data-lang="ShellSession">% git log --pretty=format:'%aN &lt;%ae&gt;' $1 | sort -u
+</code></pre><p>Thus the final release notes should look something like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Markdown" data-lang="Markdown">**WARNING**: Feature FooBar is now considered deprecated and will be removed in
+release X.Y.FOO.
+
+ + Change FooBarBaz to support Xyz.
+ <span style="color:#66d9ef">*</span> Update documentation of FooBar.
+ <span style="color:#66d9ef">-</span> Remove broken XyzFoo implementation.
+
+Thanks to all of the people who made this release possible:
+
+ <span style="color:#66d9ef">*</span> Jane Citizen &lt;<span style="color:#f92672">jane.citizen</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">example</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">com</span>&gt;
+ <span style="color:#66d9ef">*</span> Joe Citizen &lt;<span style="color:#f92672">joe.citizen</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">example</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">com</span>&gt;
+
+Signed-off-by: [Your Name and Email Here]
+</code></pre></div><h3 id="tag-">Tag</h3>
+<p>All release tags must be signed by a maintainer, and annotated with the release
+notes which will be used on releases page. This can be done with <code>git tag -as</code>.
+The set of valid keys to sign releases and artefacts is maintained <a href="/umoci.keyring">as part of
+this repository in the <code>gpg-offline</code> format</a>.</p>
+<h3 id="artefacts-">Artefacts</h3>
+<p>Once a release has been approved and tagged, the only thing left is to create
+the set of release artefacts to attach to the release. This can be easily done
+with <code>make release</code>, which will run <code>hack/release.sh</code> with the correct version
+information and the release artefacts will be in <code>release/X.Y.Z</code>.</p>
+<p>Note that you may need to explicitly specify the correct GPG key to use to sign
+the artefacts, which can be done by specifying <code>GPG_KEYID=</code> during the <code>make release</code> invocation.</p>
 
 
 <footer class="footline">
@@ -855,86 +826,6 @@ only helps to reduce the impact and does not mitigate it.</p>
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -984,6 +875,89 @@ only helps to reduce the impact and does not mitigate it.</p>
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1008,10 +982,10 @@ only helps to reduce the impact and does not mitigate it.</p>
 	 
 	 
 		
-			<a class="nav nav-prev" href="/reference/architecture/" title="Architecture"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/meta/governance/" title="Governance"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/reference/roadmap/" title="Roadmap" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/reference/" title="Reference" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

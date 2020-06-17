@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meta on umoci</title>
+    <link>https://umo.ci/meta/</link>
+    <description>Recent content in Meta on umoci</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://umo.ci/meta/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Changelog</title>
+      <link>https://umo.ci/meta/changelog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://umo.ci/meta/changelog/</guid>
+      <description>Changelog All notable changes to this project will be documented in this file.
+The format is based on Keep a Changelog and this project adheres to Semantic Versioning.
+Unreleased  Suppress repeated xattr warnings on destination filesystems that do not support xattrs.  0.4.5 - 2019-12-04 Added  Expose umoci subcommands as part of the API, so they can be used by other Go projects. opencontainers/umoci#289 Add extensible hooking to the core libraries in umoci, to allow for third-party media-types to be treated just like first-party ones (the key difference is the introspection and parsing logic).</description>
+    </item>
+    
+    <item>
+      <title>Contribution Guidelines</title>
+      <link>https://umo.ci/meta/contributing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://umo.ci/meta/contributing/</guid>
+      <description>Contribution Guidelines If you&amp;rsquo;re reading this, you&amp;rsquo;re likely interested in contributing to this project. That&amp;rsquo;s great! The intention of this document is to describe the basic requirements and rules-of-thumb for contributions.
+Security Issues If you are reporting a security issue, please do not create an issue or file a pull request on GitHub. Instead, disclose the issue by sending an email to mailto:security@opencontainers.org. If you feel it is necessary you may also encrypt your email with Pretty Good Privacy (PGP) using the set of PGP keys listed in the umoci keyring.</description>
+    </item>
+    
+    <item>
+      <title>Governance</title>
+      <link>https://umo.ci/meta/governance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://umo.ci/meta/governance/</guid>
+      <description>Governance Model umoci is an OCI project, and is thus governed under the OCI Charter. §5(b)(viii) of the Charter tasks the maintainers of each OCI Project with:
+ Creating, maintaining and enforcing governance guidelines for the TDC [of that OCI Project], approved by the maintainers, and which shall be posted visibly for the TDC [of that OCI Project].
+ This document describes the governance rules for umoci, and is the authortiative document that describes the governance procedure for umoci.</description>
+    </item>
+    
+    <item>
+      <title>Release Procedure</title>
+      <link>https://umo.ci/meta/releases/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://umo.ci/meta/releases/</guid>
+      <description>Release Procedure This document describes the procedure for preparing and publishing an umoci release. Note that in order for a release of umoci to be approved, it must follow the approval procedure described in GOVERNANCE.md.
+Changelog Before anything else, you must update the CHANGELOG.md to match the release. This boils down to adding a new header underneath the &amp;ldquo;Unreleased&amp;rdquo; header so that all of the changes are listed as being part of the new release.</description>
+    </item>
+    
+  </channel>
+</rss>
