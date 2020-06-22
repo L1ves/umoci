@@ -18,7 +18,7 @@
       <guid>https://umo.ci/meta/changelog/</guid>
       <description>Changelog All notable changes to this project will be documented in this file.
 The format is based on Keep a Changelog and this project adheres to Semantic Versioning.
-Unreleased  Suppress repeated xattr warnings on destination filesystems that do not support xattrs.  0.4.5 - 2019-12-04 Added  Expose umoci subcommands as part of the API, so they can be used by other Go projects. opencontainers/umoci#289 Add extensible hooking to the core libraries in umoci, to allow for third-party media-types to be treated just like first-party ones (the key difference is the introspection and parsing logic).</description>
+Unreleased umoci has been adopted by the Open Container Initative as a reference implementation of the OCI Image Specification. This will have little impact on the roadmap or scope of umoci, but it does further solidify umoci as a useful piece of &amp;ldquo;boring container infrastructure&amp;rdquo; that can be used to build larger systems.</description>
     </item>
     
     <item>
